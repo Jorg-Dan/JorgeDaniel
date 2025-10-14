@@ -1,9 +1,8 @@
 package com.senac.JorgeDaniel.entity;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "atendente")
@@ -22,6 +21,12 @@ public class Atendente {
     private LocalDateTime criacao;
     @Column(name = "atendente_atividade")
     private int atividade;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "usuario_role",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
     public int getId() {
         return id;
@@ -69,5 +74,13 @@ public class Atendente {
 
     public void setAtividade(int atividade) {
         this.atividade = atividade;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
