@@ -1,6 +1,5 @@
 package com.senac.JorgeDaniel.service;
 
-
 import com.senac.JorgeDaniel.entity.Atendente;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
